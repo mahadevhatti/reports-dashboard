@@ -1,0 +1,36 @@
+<div class="flex flex-col gap-2">
+  <div class="text-xs text-gray-500">
+    Showing {{ startEntry }}-{{ endEntry }} of {{ totalEntries }} entries
+  </div>
+  <div class="flex gap-1 justify-start items-center">
+    <button
+      [disabled]="currentPage === 1"
+      (click)="prev()"
+      class="w-7 h-7 border border-gray-200 bg-white text-gray-500 rounded-md cursor-pointer text-xs
+             flex items-center justify-center transition-all hover:bg-gray-50 hover:border-brand-600
+             disabled:opacity-40 disabled:cursor-not-allowed"
+    >
+      &lt;
+    </button>
+
+    <button
+      *ngFor="let page of pages"
+      (click)="goToPage(page)"
+      [class]="page === currentPage
+        ? 'w-7 h-7 border border-brand-600 bg-brand-600 text-white rounded-md cursor-pointer text-xs flex items-center justify-center font-semibold'
+        : 'w-7 h-7 border border-gray-200 bg-white text-gray-500 rounded-md cursor-pointer text-xs flex items-center justify-center transition-all hover:bg-gray-50 hover:border-brand-600'"
+    >
+      {{ page }}
+    </button>
+
+    <button
+      [disabled]="currentPage === totalPages"
+      (click)="next()"
+      class="w-7 h-7 border border-gray-200 bg-white text-gray-500 rounded-md cursor-pointer text-xs
+             flex items-center justify-center transition-all hover:bg-gray-50 hover:border-brand-600
+             disabled:opacity-40 disabled:cursor-not-allowed"
+    >
+      &gt;
+    </button>
+  </div>
+</div>
