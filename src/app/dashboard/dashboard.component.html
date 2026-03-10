@@ -2,7 +2,7 @@
   <app-header></app-header>
 
   <div *ngIf="!reportService.loading; else loadingTpl"
-       class="flex-1 overflow-y-auto px-6 py-4">
+       class="flex-1 overflow-y-auto px-3 py-3 sm:px-6 sm:py-4">
     <!-- Take-Home Section Title -->
     <div class="flex items-center gap-3 mb-5">
       <div class="w-9 h-9 bg-brand-600 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -19,9 +19,9 @@
     ></app-metrics-cards>
 
     <!-- Two-Column Layout: Report List (left fixed) + Charts Area (right scrollable) -->
-    <div class="flex gap-5 items-start">
+    <div class="flex flex-col lg:flex-row gap-5 items-start">
       <!-- Left Column: Report List - fixed width, stretches to match right side -->
-      <div class="w-[300px] flex-shrink-0 self-stretch">
+      <div class="w-full lg:w-[300px] lg:flex-shrink-0 self-stretch">
         <app-report-list
           [reports]="reportService.paginatedReports"
           [selectedId]="reportService.selectedReport?.id ?? ''"
@@ -36,7 +36,7 @@
       </div>
 
       <!-- Right Column: Summary + Charts - takes remaining space, scrolls internally on overflow -->
-      <div class="flex-1 min-w-0 overflow-x-auto">
+      <div class="w-full lg:flex-1 min-w-0 overflow-hidden">
         <app-report-charts
           *ngIf="reportService.selectedReport"
           [report]="reportService.selectedReport"

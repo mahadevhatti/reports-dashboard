@@ -17,7 +17,7 @@
   </div>
 
   <!-- Report Items - scrollable -->
-  <div class="flex-1 overflow-y-auto min-h-0 scrollbar-thin">
+  <div class="flex-1 overflow-y-auto min-h-0 max-h-[50vh] lg:max-h-none scrollbar-thin">
     <ng-container *ngIf="reports.length > 0; else emptyState">
       <div
         *ngFor="let report of reports; trackBy: trackByReportId"
